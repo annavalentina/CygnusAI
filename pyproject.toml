@@ -1,0 +1,25 @@
+[project]
+name = "cygnus-ai"
+version = "0.1.0"
+description = "AI algorithms for video detection (fire, humans, etc.)"
+authors = [{name = "Valentina Michailidou", email = "michailidou.v@istognosis.com"}]
+requires-python = ">=3.8,<3.9"
+
+dependencies = [
+    "flask",
+    "opencv-python",
+    "minio",
+    "tensorflow==2.8.0",
+    "numpy",
+    "ultralytics==8.3.70",
+    "kafka-python",
+    "supervision==0.25.1",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+"cygnus_ai.models" = ["*.pt"]
+

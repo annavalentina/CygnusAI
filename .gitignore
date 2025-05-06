@@ -1,0 +1,42 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+/config.ini
+run_api.py
+examples/test.py
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+.venv.bak/
+
+# IDEs/editors
+.vscode/
+.idea/
+*.swp
+
+# Logs & debug
+*.log
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.*
+
+# Test outputs
+htmlcov/
+coverage.xml
+.pytest_cache/
+
