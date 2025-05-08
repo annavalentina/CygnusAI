@@ -177,7 +177,8 @@ class CygnusStreamProcessor:
                         alert["latitude"] = self.latitude
                         alert["longitude"] = self.longitude
                     alert["algorithm"] = self.algorithm.name
-                    alert["model"] = self.algorithm.model_name
+                    if self.algorithm.model_name is not None: #Include model if utilized
+                        alert["model"] = self.algorithm.model_name
                     self.producer.send(self.kafka_alert_topic, json.dumps(alert).encode('utf-8'))
                     self.producer.flush()
 
@@ -216,7 +217,7 @@ class CygnusStreamProcessor:
             self.start_input_stream()
             self.start_output_stream()
             self.running = True
-
+            self.algorithm.setup()
             while not self._stop_event.is_set():
                 # Read YUV420p image from the input stream
                 buffer_size = self.width * self.height * 3 // 2  # 1.5 bytes per pixel for YUV420p

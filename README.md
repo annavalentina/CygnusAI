@@ -37,8 +37,9 @@ A Python library and example application that lets you apply AI algorithms to li
 
 * **Custom Extensions**:
 
-  * Register your own algorithms via `register_algorithm("Name", YourAlgorithmClass)`.
+  * Register your own algorithms via `register_algorithm("AlgorithmName", YourAlgorithmClass)`.
   * Register custom models via `register_model("ModelName", "path/to/model.pt")`.
+  * Map custom models to algorithms via `set_models_for_algorithm("AlgorithmName", ["ModelName1", "ModelName2"])`.
 
 ---
 
@@ -197,14 +198,8 @@ Multiple processing threads can run concurrently, each producing a separate RTMP
 
 ## Usage
 
-1. Clone this repo and install requirements:
-
-   ```bash
-   git clone https://github.com/your-org/cygnus-app.git
-   cd cygnus-app
-   pip install -r requirements.txt
-   ```
-2. Copy and edit `examples/config.ini` with your infrastructure settings.
+1. Locate `https://github.com/annavalentina/CygnusAI`
+2. Copy and edit `examples/config.ini`  with your infrastructure settings.
 3. Register any custom algorithms or models in `examples/cygnus_app.py`.
 4. Run the application:
 

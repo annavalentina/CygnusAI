@@ -3,8 +3,12 @@ from cygnus_ai.algorithm import BaseAlgorithm
 import cv2
 
 class FaceDetection(BaseAlgorithm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+    #     self.face_cascade = cv2.CascadeClassifier(cascade_path)
+
+    def setup(self):
         cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
         self.face_cascade = cv2.CascadeClassifier(cascade_path)
 
@@ -33,7 +37,6 @@ class FaceDetection(BaseAlgorithm):
                 "uuid": self.input_uuid,
                 "label": "face",
                 "confidence_score": "1.0",  # placeholder
-                "bbox": [int(x), int(y), int(w), int(h)]
             })
 
         if alerts:

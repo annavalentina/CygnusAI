@@ -2,7 +2,7 @@ import uuid
 from threading import Thread
 from flask import Flask, request, jsonify
 from .processor import CygnusStreamProcessor
-from .models.registry import get_algorithm, get_model_path
+from cygnus_ai.registry import get_algorithm, get_model_path_for_algorithm
 
 def create_app(config):
     app = Flask(__name__)
@@ -37,7 +37,7 @@ def create_app(config):
         try:
             model_path=None
             if model_name:
-                model_path=get_model_path(model_name)
+                model_path=get_model_path_for_algorithm(algorithm_name, model_name)
             algorithm=get_algorithm(algorithm_name,input_uuid, algorithm_name, model_name, model_path,
                                     processor.capture_stream, processor.send_alert)
         except ValueError as e:

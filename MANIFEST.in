@@ -1,6 +1,5 @@
 include README.md
 include LICENCE
-recursive-include cygnus_ai/examples/run_api
-recursive-include cygnus_ai/examples/run_api
+recursive-include cygnus_ai/examples/cygnus_app
+recursive-include cygnus_ai/examples/config.ini
 recursive-include cygnus_ai/models *.pt
-recursive-include cygnus_ai/models *.h5

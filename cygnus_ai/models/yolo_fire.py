@@ -1,31 +1,32 @@
 
-from cygnus_ai.algorithm import BaseAlgorithm
+from ..algorithm import BaseAlgorithm
 import supervision as sv
-from .registry import list_models
 from ultralytics import YOLO
 
 
 class YoloFire(BaseAlgorithm):
 
-    def __init__(self, input_uuid, algorithm_name, model_name=None, model_path=None,
-                 capture_callback=lambda: None, alert_callback=lambda a: None):
-
-        # Ensure model_path is provided
-        if model_path is None:
-            raise ValueError(f"YoloFire requires a valid model. Available models: {list_models()}")
-
-        # Call base constructor
-        super().__init__(
-            input_uuid=input_uuid,
-            algorithm_name=algorithm_name,
-            model_name=model_name,
-            model_path=model_path,
-            capture_callback=capture_callback,
-            alert_callback=alert_callback
-        )
-
-        # Load the YOLO model
-        self.model_fire = YOLO(model_path)
+    def setup(self):
+        self.model_fire = YOLO(self.model_path)
+    # def __init__(self, input_uuid, algorithm_name, model_name=None, model_path=None,
+    #              capture_callback=lambda: None, alert_callback=lambda a: None):
+    #
+    #     # Ensure model_path is provided
+    #     if model_path is None:
+    #         raise ValueError(f"YoloFire requires a valid model. Available models: {list_models()}")
+    #
+    #     # Call base constructor
+    #     super().__init__(
+    #         input_uuid=input_uuid,
+    #         algorithm_name=algorithm_name,
+    #         model_name=model_name,
+    #         model_path=model_path,
+    #         capture_callback=capture_callback,
+    #         alert_callback=alert_callback,
+    #     )
+    #
+    #     # Load the YOLO model
+    #     self.model_fire = YOLO(model_path)
 
     def process_frame(self, frame_np):
         image_od  = self.sv_annotattions_fire(frame_np, self.input_uuid)

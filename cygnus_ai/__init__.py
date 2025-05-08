@@ -1,8 +1,9 @@
 from .config import Config
 from .algorithm import BaseAlgorithm
-from .models.registry import register_model, register_algorithm, list_algorithms, list_models
+from cygnus_ai.registry import (register_model, register_algorithm,
+                                set_models_for_algorithm, list_models_for_algorithm)
 from .api import create_app
-
+import cygnus_ai.models
 
 __all__ = [
     "Config",
@@ -10,6 +11,8 @@ __all__ = [
     "register_model",
     "register_algorithm",
     "create_app",
-    "list_models",
-    "list_algorithms"
+    "set_models_for_algorithm",
+    "list_models_for_algorithm"
 ]
+
+

@@ -8,7 +8,7 @@ Usage:
   2. Configure the application via INI or manual config.
 """
 
-from cygnus_ai import Config, create_app, register_algorithm, register_model, BaseAlgorithm
+from cygnus_ai import Config, create_app, register_algorithm, register_model, set_models_for_algorithm, BaseAlgorithm
 
 class BlackWhite(BaseAlgorithm):
     """
@@ -45,8 +45,9 @@ class BlackWhite(BaseAlgorithm):
 # Register the custom algorithm class under a unique name
 register_algorithm("BlackWhite", BlackWhite)
 
-# Uncomment and register your custom ML model if needed
+# Uncomment and register your custom ML model if needed and map it to an algorithm
 #register_model("CustomModel", "model.pt")
+#set_models_for_algorithm("YoloFire",["CustomModel"])
 
 # OPTION 1 - Load configuration from an INI file
 config = Config().load_from_ini("config.ini")
